@@ -58,7 +58,7 @@ impl Handler for WebsiteHandler{
                             //let queryStringData = &request.query_string().unwrap().data; 
                             let username = match &request.query_string().unwrap().data["username"] {
                                 QueryStringValue::Single(x) => {
-                                    let x = x.replace("+", " ");
+                                    let x = x.replace("+", " ").replace("%27", "'").replace("%2C", ",");
                                     x
                                 }
                                 QueryStringValue::Multiple(vect) => {
@@ -68,7 +68,7 @@ impl Handler for WebsiteHandler{
                             match &request.query_string().unwrap().data["message"] {
                                 QueryStringValue::Single(x) => {
                                     println!("{}", x);
-                                    let x = x.replace("+", " ");
+                                    let x = x.replace("+", " ").replace("%27", "'").replace("%2C", ",").replace("%3F", "?").replace("%3A", ":").replace("%2F", "/"); 
                                     convDatabase.push((x.to_string(), username.to_string()));
                                 }
                                 QueryStringValue::Multiple(vect) => {
