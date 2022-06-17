@@ -15,5 +15,5 @@ I know the html sucks, but the focus was on the backend.
 
 ## How it looks like
 <p align = "center">
-    <img src="imgs/Demo_img.png" width="30%">
+    <img src="imgs/Demo_img.png" width="60%">
 </p>
