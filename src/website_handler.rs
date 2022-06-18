@@ -1,5 +1,4 @@
 use crate::http::QueryStringValue;
-use crate::server::Server;
 use async_trait::async_trait;
 
 use super::http::{Method, Request, Response, StatusCode};
@@ -19,7 +18,7 @@ impl WebsiteHandler {
     }
 
     fn read_file(&self, file_path: &str) -> Option<String> {
-        let path = format!("{}\\{}", self.public_path, file_path);
+        //let path = format!("{}\\{}", self.public_path, file_path);
 
         //println!("{}", &self.public_path);
         //println!("{}", &fs::canonicalize(format!("public\\{}",  file_path)).unwrap().to_string_lossy()[4..]);
@@ -48,7 +47,7 @@ impl Handler for WebsiteHandler {
         &mut self,
         request: &Request,
         conversationDatabase: Arc<Mutex<Vec<(String, String)>>>,
-        ip_addr: String,
+        ipAddr: String,
     ) -> Response {
         match request.method() {
             Method::GET => match request.path() {

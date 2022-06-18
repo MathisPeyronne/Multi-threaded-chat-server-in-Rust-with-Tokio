@@ -1,8 +1,8 @@
 use super::StatusCode;
-use std::fmt::{Display, Formatter, Result as FmtResult};
-use std::io::{Result as IoResult, Write};
-use tokio::io::{AsyncReadExt, AsyncWriteExt};
-use tokio::net::TcpStream;
+//use std::fmt::{Display, Formatter, Result as FmtResult};
+use std::io::Result as IoResult;
+use tokio::io::AsyncWriteExt;
+//use tokio::net::TcpStream;
 
 #[derive(Debug)]
 pub struct Response {
@@ -21,7 +21,7 @@ impl Response {
             None => "",
         };
 
-        let response = "HTTP/1.1 200 OK";
+        //let response = "HTTP/1.1 200 OK";
 
         stream
             .write_all(
