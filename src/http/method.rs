@@ -13,7 +13,7 @@ pub enum Method {
     PATCH,
 }
 
-impl FromStr for Method{
+impl FromStr for Method {
     type Err = MethodError;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {

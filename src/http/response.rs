@@ -1,14 +1,13 @@
 use super::StatusCode;
 use std::fmt::{Display, Formatter, Result as FmtResult};
-use std::io::{Write, Result as IoResult};
+use std::io::{Result as IoResult, Write};
 use tokio::io::{AsyncReadExt, AsyncWriteExt};
 use tokio::net::TcpStream;
-
 
 #[derive(Debug)]
 pub struct Response {
     status_code: StatusCode,
-    body: Option<String>
+    body: Option<String>,
 }
 
 impl Response {
@@ -23,11 +22,21 @@ impl Response {
         };
 
         let response = "HTTP/1.1 200 OK";
-        
-        stream.write_all(format!("HTTP/1.1 {} {}\r\n\r\n{}", self.status_code, self.status_code.reason_phrase(), body).as_bytes()).await.unwrap();
+
+        stream
+            .write_all(
+                format!(
+                    "HTTP/1.1 {} {}\r\n\r\n{}",
+                    self.status_code,
+                    self.status_code.reason_phrase(),
+                    body
+                )
+                .as_bytes(),
+            )
+            .await
+            .unwrap();
         //stream.write_all(response.as_bytes()).await.unwrap();
         Ok(())
-
 
         /*
         write!(
@@ -38,7 +47,5 @@ impl Response {
             body
         )
         */
-        
     }
 }
-
