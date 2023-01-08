@@ -43,6 +43,7 @@ FROM gcr.io/distroless/cc-debian11
 
 COPY --from=builder /etc/passwd /etc/passwd
 COPY --from=builder /etc/group /etc/group
+COPY --from=builder /app/public /app/public
 
 COPY --from=builder /app/target/release/server_practice /app/server_practice
 WORKDIR /app

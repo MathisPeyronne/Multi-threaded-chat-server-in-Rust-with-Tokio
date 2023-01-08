@@ -6,6 +6,7 @@ use std::convert::TryFrom;
 use std::convert::TryInto;
 use std::io::{Read, Write};
 use std::sync::Arc;
+use tokio::io::AsyncWriteExt;
 use tokio::time::{sleep, Duration};
 use tokio::{
     io::{AsyncRead, AsyncReadExt},
@@ -42,6 +43,7 @@ impl Server {
     #[tokio::main]
     pub async fn run(self, mut handler: (impl Handler + Send + Clone + 'static)) {
         println!("Listening on {}", self.addr);
+
         let listener = TcpListener::bind(&self.addr).await.unwrap();
 
         let neww = Arc::new(Mutex::new(5));
@@ -54,6 +56,15 @@ impl Server {
                 Ok((mut stream, _)) => {
                     tokio::spawn(async move {
                         let mut buffer = [0; 1024];
+                        //just testing
+                        // stream
+                        //     .write_all("HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=UTF-8\r\n\r\n<html><body>Hello world</body></html>\r\n".as_bytes())
+                        //     .await
+                        //     .unwrap();
+                        // println!("here");
+                        // //sleep(Duration::from_millis(100000000000)).await;
+                        // println!("end of sleep");
+                        // //
                         match stream.read(&mut buffer).await {
                             Ok(_) => {
                                 println!(
