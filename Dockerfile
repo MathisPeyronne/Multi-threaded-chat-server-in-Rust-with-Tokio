@@ -39,7 +39,8 @@ COPY --from=cacher /usr/local/cargo /usr/local/cargo
 
 RUN cargo build --release
 
-FROM gcr.io/distroless/cc-debian11
+
+FROM rust:1.66
 
 COPY --from=builder /etc/passwd /etc/passwd
 COPY --from=builder /etc/group /etc/group
@@ -52,3 +53,19 @@ USER web:web
 
 #CMD /app
 CMD ["./server_practice"]
+
+###################### For production, you use a distroless, but for debugging with distro ######################
+
+# FROM gcr.io/distroless/cc-debian11
+
+# COPY --from=builder /etc/passwd /etc/passwd
+# COPY --from=builder /etc/group /etc/group
+# COPY --from=builder /app/public /public
+
+# COPY --from=builder /app/target/release/server_practice /app/server_practice
+# WORKDIR /app
+
+# USER web:web
+
+# #CMD /app
+# CMD ["./server_practice"]
