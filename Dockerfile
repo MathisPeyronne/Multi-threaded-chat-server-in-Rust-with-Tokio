@@ -44,7 +44,7 @@ FROM rust:1.66
 
 COPY --from=builder /etc/passwd /etc/passwd
 COPY --from=builder /etc/group /etc/group
-COPY --from=builder /app/public /public
+COPY --from=builder /app/public /app/public
 
 COPY --from=builder /app/target/release/server_practice /app/server_practice
 WORKDIR /app
