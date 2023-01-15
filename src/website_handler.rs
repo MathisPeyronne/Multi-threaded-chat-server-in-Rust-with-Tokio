@@ -29,6 +29,8 @@ impl WebsiteHandler {
                     println!("success: {}", format!("public/{}", file_path));
                     fs::read_to_string(path).ok()
                 } else {
+                    println!("{:?}", &path.to_string_lossy()[4..]);
+                    println!("{:?}", self.public_path);
                     println!("Directory traversal attack attempt: {:?}", &path);
                     None
                 }
