@@ -40,7 +40,8 @@ COPY --from=cacher /usr/local/cargo /usr/local/cargo
 RUN cargo build --release
 
 
-FROM rust:1.66
+FROM debian:stable-slim
+#rust:1.66
 
 COPY --from=builder /etc/passwd /etc/passwd
 COPY --from=builder /etc/group /etc/group
