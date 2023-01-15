@@ -10,7 +10,7 @@ Simple server to skill up in Rust and Tokio.
 - Shortcomings:
     - The client only communicates to the backend through GET requests.
     - You have to constantly renter your username.
-- You can find a containerized version of it in the "containerize-it-Docker" branch.
+- It is now containerized, with a clean multi-staged build for quick developement.
 
 I know the html sucks, but the focus was on the backend.
 
