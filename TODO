@@ -1,1 +1,4 @@
 TODO:
+- Making the docker compose to work:
+    1. be able to make the project work in a custom network without docker compose
+    2. then try the docker compose again

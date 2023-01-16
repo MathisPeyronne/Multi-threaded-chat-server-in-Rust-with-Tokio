@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  multi-threaded-chat:
+    build: .
+    # volumes:
+    #   - :/projects:/projects
+    environment:
+      - USER=Mathis
+    ports:
+      - "8080:8080"
+    restart: always
