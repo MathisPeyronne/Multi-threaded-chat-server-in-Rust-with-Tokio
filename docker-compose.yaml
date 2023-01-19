@@ -10,9 +10,9 @@ services:
       - "8080:8080"
     restart: always
     depends_on:
-      - db
+      - database
     links:
-      - db
+      - database
   database:
       image: postgres:latest
       volumes:
@@ -30,4 +30,4 @@ services:
         start_period: 5s
 
 volumes:
-  db_vol:
+  db-data:
