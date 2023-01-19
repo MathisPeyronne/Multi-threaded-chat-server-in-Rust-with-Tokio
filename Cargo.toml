@@ -8,4 +8,5 @@ edition = "2021"
 [dependencies]
 async-trait = "0.1.56"
 futures = "0.3.21"
+sea-orm = { version = "0.10.7", features = ["sqlx-postgres", "runtime-tokio-rustls"] }
 tokio = {version = "1", features = ["full"] }
