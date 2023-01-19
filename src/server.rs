@@ -13,6 +13,12 @@ use tokio::{
     net::TcpListener,
 };
 
+//for the database
+mod lib;
+use dotenvy::dotenv;
+use dotenvy_macro::dotenv;
+use lib::run_database;
+
 #[async_trait]
 pub trait Handler {
     async fn handle_request(
@@ -42,6 +48,11 @@ impl Server {
     }
     #[tokio::main]
     pub async fn run(self, mut handler: (impl Handler + Send + Clone + 'static)) {
+        println!("launching database");
+        dotenv().ok(); //loads the .env file
+        let database_uri = dotenv!("DATABASE_URL");
+        run_database(database_uri).await;
+
         println!("Listening on {}", self.addr);
 
         let listener = TcpListener::bind(&self.addr).await.unwrap();

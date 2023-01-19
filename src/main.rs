@@ -2,7 +2,7 @@
 
 use futures::lock::Mutex;
 use server::Server;
-use std::{env, sync::Arc};
+use std::sync::Arc;
 use website_handler::WebsiteHandler;
 
 mod http;

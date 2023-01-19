@@ -1,4 +1,4 @@
 TODO:
-- Making the docker compose to work:
-    1. be able to make the project work in a custom network without docker compose
-    2. then try the docker compose again
+- adding the database:
+    1. launch the database(fx in lib.rs) from server ? so that it works
+        - find a way to make the lib import work
