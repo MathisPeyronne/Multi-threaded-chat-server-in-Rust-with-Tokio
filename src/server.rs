@@ -14,10 +14,9 @@ use tokio::{
 };
 
 //for the database
-mod lib;
+//use crate::lib::run_database;
 use dotenvy::dotenv;
 use dotenvy_macro::dotenv;
-use lib::run_database;
 
 #[async_trait]
 pub trait Handler {
@@ -51,7 +50,7 @@ impl Server {
         println!("launching database");
         dotenv().ok(); //loads the .env file
         let database_uri = dotenv!("DATABASE_URL");
-        run_database(database_uri).await;
+        server_practice::run_database(database_uri).await;
 
         println!("Listening on {}", self.addr);
 

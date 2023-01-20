@@ -1,4 +1,4 @@
 TODO:
 - adding the database:
     1. launch the database(fx in lib.rs) from server ? so that it works
-        - find a way to make the lib import work
+        - run psql -U postgres -d postgres to access it

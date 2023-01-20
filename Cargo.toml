@@ -10,5 +10,6 @@ async-trait = "0.1.56"
 dotenvy = "0.15.6"
 dotenvy_macro = "0.15.1"
 futures = "0.3.21"
+postgres = "0.19.4"
 sea-orm = { version = "0.10.7", features = ["sqlx-postgres", "runtime-tokio-rustls"] }
 tokio = {version = "1", features = ["full"] }

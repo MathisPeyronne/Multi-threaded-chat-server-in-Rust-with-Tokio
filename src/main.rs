@@ -6,6 +6,7 @@ use std::sync::Arc;
 use website_handler::WebsiteHandler;
 
 mod http;
+//mod lib;
 mod server;
 mod website_handler;
 
