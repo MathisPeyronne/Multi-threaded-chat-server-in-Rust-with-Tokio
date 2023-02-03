@@ -10,11 +10,15 @@ use std::sync::Arc;
 #[derive(Clone)]
 pub struct WebsiteHandler {
     public_path: String,
+    ip_address: String,
 }
 
 impl WebsiteHandler {
-    pub fn new(public_path: String) -> Self {
-        Self { public_path }
+    pub fn new(public_path: String, ip_address: String) -> Self {
+        Self {
+            public_path,
+            ip_address,
+        }
     }
 
     fn read_file(&self, file_path: &str) -> Option<String> {
