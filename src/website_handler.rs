@@ -122,6 +122,8 @@ impl Handler for WebsiteHandler {
                             let template =
                                 self.read_file("hello.html").expect("failed to load file");
                             let html_str = template.replace("{CHAT_HISTORY}", &chat_history_str);
+                            //put the right ip address
+
                             Response::new(StatusCode::Ok, Some(html_str))
                         }
                     }

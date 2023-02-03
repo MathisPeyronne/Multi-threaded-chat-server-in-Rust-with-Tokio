@@ -24,19 +24,29 @@ fn main() {
     let default_interface = all_interfaces
         .iter()
         .find(|e| e.is_up() && !e.is_loopback() && !e.ips.is_empty());
-
+    let ip_address: String;
     match default_interface {
-        Some(interface) => println!(
-            "Found default interface with [{}] and ipaddr of [{:?}].",
-            interface.name, interface.ips[0]
-        ),
-        None => println!("Error while finding the default interface."),
+        Some(interface) => {
+            ip_address = interface.ips[0].ip().to_string();
+            println!(
+                "Found default interface with [{}] and ipaddr of [{:?}].",
+                interface.name,
+                interface.ips[0].ip()
+            )
+        }
+        None => {
+            ip_address = "192.168.1.152".to_string(); //default, the one from linux old laptop
+            println!("Error while finding the default interface.");
+        }
     }
+    println!("local ip address: {}", ip_address);
 
+    /*  display all network interfaces
     for iface in all_interfaces {
         println!("{:?}", iface.ips);
     }
-    let ip_address = "192.168.1.152".to_string();
+
+    */
 
     //************************************************
 
