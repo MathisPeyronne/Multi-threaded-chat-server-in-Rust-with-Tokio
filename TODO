@@ -2,3 +2,9 @@ TODO:
 - adding the database:
     1. launch the database(fx in lib.rs) from server ? so that it works
         - run psql -U postgres -d postgres to access it
+- Make the database work
+- Make the dynamical ip address
+
+
+if i want to make it work for windows:
+    - https://github.com/libpnet/libpnet/issues/278#issuecomment-318155351 
