@@ -10,15 +10,11 @@ use std::sync::Arc;
 #[derive(Clone)]
 pub struct WebsiteHandler {
     public_path: String,
-    ip_address: String,
 }
 
 impl WebsiteHandler {
-    pub fn new(public_path: String, ip_address: String) -> Self {
-        Self {
-            public_path,
-            ip_address,
-        }
+    pub fn new(public_path: String) -> Self {
+        Self { public_path }
     }
 
     fn read_file(&self, file_path: &str) -> Option<String> {
@@ -122,8 +118,6 @@ impl Handler for WebsiteHandler {
                             let template =
                                 self.read_file("hello.html").expect("failed to load file");
                             let html_str = template.replace("{CHAT_HISTORY}", &chat_history_str);
-                            //put the right ip address
-
                             Response::new(StatusCode::Ok, Some(html_str))
                         }
                     }
