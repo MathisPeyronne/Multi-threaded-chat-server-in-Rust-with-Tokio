@@ -1,21 +1,21 @@
 #inspiration from: https://youtu.be/xuqolj01D7M?t=2192
 
 #stage 1: generate a recipe file for dependencies
-FROM rust:1.66 as planner
+FROM rust:latest as planner
 WORKDIR /app
 RUN cargo install cargo-chef
 COPY . .
 RUN cargo chef prepare --recipe-path recipe.json
 
 #stage 2 - build dependencies
-FROM rust:1.66 as cacher
+FROM rust:latest as cacher
 WORKDIR /app
 RUN cargo install cargo-chef
 COPY --from=planner /app/recipe.json recipe.json
 RUN cargo chef cook --release --recipe-path recipe.json
 
 #stage 3 
-FROM rust:1.66 as builder
+FROM rust:latest as builder
 
 #Create a user
 ENV USER=web
