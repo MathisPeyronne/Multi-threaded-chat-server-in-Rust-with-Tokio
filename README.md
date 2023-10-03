@@ -1,6 +1,6 @@
 # Multi-threaded chat server in Rust with Tokio
  
-Simple server to skill up in Rust and Tokio.
+High performant chat server to skill up in Rust and Tokio.
 
 ## Notes:
 - Each incoming request spins up a tokio task => the server can handle multiple requests at the time.
