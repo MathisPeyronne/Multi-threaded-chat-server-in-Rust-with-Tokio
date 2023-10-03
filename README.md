@@ -13,7 +13,7 @@ Simple server to skill up in Rust and Tokio.
 - It is now containerized, with a clean multi-staged build for quick developement.
 - To run: just run  ``` docker-compose up --build ```
 
-I know the html sucks, but the focus was on the backend.
+**I know the html sucks, but the focus was on the backend.**
 
 ## How it looks like
 <p align = "center">
